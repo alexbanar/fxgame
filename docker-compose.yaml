@@ -1,0 +1,39 @@
+docker-compose.yaml
+________________________________________________
+version: '3'
+services:
+  app:
+    build:
+      context: .
+______________________________________________
+dockerfile:
+Without: RUN gradle dist --no-daemon 
+With changed RUN unzip /home/gradle/fxgame/build/distributions/game2048-*.zip -d /tmp/fxgame line
+to RUN unzip ./game2048-*.zip -d /tmp/fxgame
+-----------------------------------
+FROM gradle:jdk11 as builder
+COPY --chown=gradle:gradle . /home/gradle/fxgame
+WORKDIR /home/gradle/fxgame
+#RUN gradle dist --no-daemon
+#RUN unzip /home/gradle/fxgame/build/distributions/game2048-*.zip -d /tmp/fxgame
+RUN unzip ./game2048-*.zip -d /tmp/fxgame
+
+FROM ubuntu:18.04
+COPY --from=builder /tmp/fxgame/image/ /fxgame
+RUN apt-get update && apt-get install --no-install-recommends -y xorg libgl1-mesa-glx && rm -rf /var/lib/apt/lists/* 
+WORKDIR /fxgame
+CMD ./bin/fxgame
+________________________________________________________________________________
+Build and Run:
+docker-compose run app --rm -e DISPLAY=host.docker.internal:0.0 --build
+_________________________________________________________________________
+Result:
+Successfully built 1beadda0f483
+Successfully tagged dockerinstaller_app:latest
+WARNING: Image for service app was built because it did not already exist.
+To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating dockerinstaller_app_run ... done
+Error response from daemon: OCI runtime create failed: container_linux.go:349: 
+starting container process caused "exec:
+\"--rm\": executable file not found in $PATH": unknown
+
