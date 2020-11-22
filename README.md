@@ -24,6 +24,6 @@ The rest is pretty straightforward"
 COPY --chown=gradle:gradle . /home/gradle/fxgame
 Copies jvm.dll file to /fxgame/bin/server/jvm.dll.
 I have checked the place of jvm file by searching(without running last CMD by #CMD) into container.
-Without this command there is an error that java file not exist.
+Without this command there is an error that java file does not exist.
 
 
