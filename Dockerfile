@@ -17,6 +17,7 @@ Build:
 docker build -t fxgame .
 _____________________________________________________________________________
 Result:
+ERROR [builder 4/5] RUN gradle dist --no-daemon
 FAILURE: Build failed with an exception.
 What went wrong:
 Task 'dist' not found in root project 'fxgame'.
