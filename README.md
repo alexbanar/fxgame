@@ -28,6 +28,7 @@ and the libgl1-mesa-glx package containing the LibGL library(https://www.x.o
 The rest is pretty straightforward"
 
 7.
+Alex:
 COPY --chown=gradle:gradle . /home/gradle/fxgame
 Copies jvm.dll file to /fxgame/bin/server/jvm.dll.
 I have checked the place of jvm file by searching(without running last CMD by #CMD) into container.
@@ -36,5 +37,5 @@ Without this command there is an error that java file does not exist.
 8.
 Running using Docker
 "You can build container image from source code using the Dockerfile and run the containerized game. You have to share the X11 socket with the container. For that you need to install VcXsrv Windows X Server for windows or Xquartz if you're using macOS. Make sure to allow connections from network during setup. On macOS, you'll need to run xhost +127.0.0.1 every time you re-open Xquartz. The final step is to run the container: docker run -it --rm -e DISPLAY=host.docker.internal:0.0 image_name".
-I have installed om my windows 10  VcXsrv Windows X Server for windows. The runnung of the container is shown on the screen of VcXsrv Windows X Server.
+Alex: I have installed om my windows 10  VcXsrv Windows X Server for windows. The runnung of the container is shown on the screen of VcXsrv Windows X Server.
 
