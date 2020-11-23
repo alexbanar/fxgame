@@ -26,4 +26,6 @@ Copies jvm.dll file to /fxgame/bin/server/jvm.dll.
 I have checked the place of jvm file by searching(without running last CMD by #CMD) into container.
 Without this command there is an error that java file does not exist.
 
-
+6.
+From StackOverflow:
+"I'd strongly encourage you to get the gradle build working locally before worrying about running it in docker; if you've got a JDK installed you may well not need gradle installed - is there a gradlew script in the working dir? ./gradlew dist will download and run gradle for you. Alternatively, if you insist on debugging the build in docker, you could try: docker run --rm -it -v "$PWD:/home/gradle/fxgame" gradle:jdk11 bash Then from the command prompt you can run cd fxgame && gradle dist and watch it fail because there's no dist task configured in the build.gradle." – Robert Elliot yesterday
