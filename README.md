@@ -1,4 +1,8 @@
 # fxgame
+0.
+The JavaFx App
+"The JavaFx application I'll be using throughout this post is the 2048 game built using JavaFX and Java 11 by Bruno Borges. It uses gradle to compile and build the artifacts. The dist task generates (depending on your OS) binaries for Windows, Mac or Linux, with Java bundled in (using Java 11 jlink custom images). The generated ZIP file come with a binary that starts the game with the bundled optimized/trimmed JVM with only the needed modules."
+
 1.Link to article with code https://aboullaite.me/javafx-docker/
 
 2.Link to git to needed code for article code to run https://github.com/brunoborges/fx2048/
